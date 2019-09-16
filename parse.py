@@ -1,5 +1,8 @@
-f = open("xmlExample.xml", "r")
+import sys
 
+filename=str(sys.argv[1])[0:len(str(sys.argv[1]))-4]
+
+f = open(filename+".xml", "r")
 parser_string = f.read()
 
 i=0
@@ -30,13 +33,13 @@ while parser_string.find("<",i)!=-1:
         #go to the next tag
         i=first_index+1
 
-f2 = open("xmlOutputWithoutEmptyTags.xml", "w")
+f2 = open(filename + "OutputWithoutEmptyTags.xml", "w")
 f2.write(parser_string)
 
 f.close()
 f2.close()
 
-f = open("xmlOutputWithoutEmptyTags.xml", "r")
+f = open(filename + "OutputWithoutEmptyTags.xml", "r")
 
 parser_string = f.read()
 
@@ -86,13 +89,13 @@ while parser_string.find("<h1>",i)!=-1:
     #go to the next heading
     i = j
 
-f2 = open("xmlOutputWithMergedStrings.xml", "w")
+f2 = open(filename + "OutputWithMergedStrings.xml", "w")
 f2.write(parser_string)
 
 f.close()
 f2.close()
 
-f = open("xmlOutputWithMergedStrings.xml", "r")
+f = open(filename + "OutputWithMergedStrings.xml", "r")
 
 parser_string = f.read()
 
@@ -131,14 +134,14 @@ while parser_string.find("<h1>",i)!=-1:
     #go to the next heading
     i = j
 
-f2 = open("xmlOutputWithSectionsAndClauses.xml", "w")
+f2 = open(filename + "OutputWithSectionsAndClauses.xml", "w")
 f2.write(parser_string)
 
 f.close()
 f2.close()
 
 
-f = open("xmlOutputWithSectionsAndClauses.xml", "r")
+f = open(filename + "OutputWithSectionsAndClauses.xml", "r")
 parser_string = f.read()
 
 #create a new final parser
@@ -175,7 +178,7 @@ while parser_string.find("<section",i)!=-1:
 #add the document terminator
 final_string = final_string + "</document>"
 
-f2 = open("xmlOutputFinal.xml", "w")
+f2 = open(filename + "OutputFinal.xml", "w")
 f2.write(final_string)
 
 f.close()
